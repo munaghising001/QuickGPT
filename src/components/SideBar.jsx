@@ -16,9 +16,28 @@ const SideBar = () => {
                 alt="" 
                 className='w-full max-w-48' 
             />
+            {/* New Chat Button*/}
+          <button className='flex justify-center items-center w-full py-2 mt-10 text-white bg-gradient-to-r from-[#A456F7] to-[#3d81F6] text-sm rounded-md cursor-pointer'>
+            <span className='mr-2 text-2xl'>+</span> New Chat
+          </button>
+          {/* Search Conversation */}
+          <div className='flex items-center gap-2 p-3 mt-4 border border-gray-400 dark:border-white/20 rounded-md'>
+          <img src= {assets.search_icon} className='w-4 not-dark:invert' alt=''/>
+          <input onChange={(e)=>setSearch(e.target.value)} value={search} type='text' placeholder='Search conversations' className='text-xs placeholder:text-gray-400 outline-none'/>
+          </div>
+          {/* Recent Chats */}
+          {chats.lenght > 0 &&<p className='mt-4 text-sm'> Recent Chats</p>}
+           <div>
+            {
+                chats.filter((chat)=> chat.messages[0] ? chat.messages[0]. content.toLowerCase().includes(search.toLocaleLowerCase()): chat.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())).map((chat)=>(
+                    <div key ={chat._id} className=''>
 
+                    </div>
+                ))
+            }
+           </div>
         </div>
-    )
+    ) 
 }
 
 export default SideBar
